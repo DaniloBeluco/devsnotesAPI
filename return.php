@@ -5,6 +5,8 @@ header("Access-Control-Allow-Origin: *");
 /* Diz o tipo de requisições permitidos */
 header("Acess-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers");
+
 /* Diz que o retorno vai ser um json */
 header("Content-Type: application/json");
 

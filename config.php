@@ -1,5 +1,6 @@
 <?php
 global $pdo;
+
 try {
     $pdo = new PDO("mysql:dbname=devsnotes;host=localhost", "root", "");
 } catch (PDOException $e) {

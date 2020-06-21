@@ -4,13 +4,17 @@ require('../config.php');
 /* Pega o metodo da requisição que veio */
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 
+$json = file_get_contents('php://input');
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers");
 /* Se o metodo é POST */
 if ($method === 'post') {
 
-    /* Pega os campos que vieram no post */
-    $title = filter_input(INPUT_POST, 'title');
-    $body = filter_input(INPUT_POST, 'body');
+    $header = json_decode($json, true);
 
+    /* Pega os campos que vieram no post */
+    $title = $header['title'];
+    $body = $header['body'];
+    
     /* Se os campos tao preenchidos */
     if ($title && $body) {
         $sql = $pdo->prepare("INSERT INTO notes (title, body) VALUES (:title, :body)");
